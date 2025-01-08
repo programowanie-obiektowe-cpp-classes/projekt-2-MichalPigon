@@ -44,7 +44,7 @@ public:
 private:
     int licznik, mianownik;
 };
-frac operator+(frac u1, frac u2)
+frac operator+(frac& u1, frac& u2)
 {
     if(u1.getMianownik() != u2.getMianownik())
     {
@@ -60,15 +60,15 @@ frac operator+(frac u1, frac u2)
     }
     
 }
-frac operator+(int n, frac u)
+frac operator+(int& n, frac& u)
 {
     return frac(u.getMianownik() * n + u.getLicznik(), u.getMianownik());
 }
-frac operator+(frac u, int n)
+frac operator+(frac& u, int& n)
 {
     return frac(u.getMianownik() * n + u.getLicznik(), u.getMianownik());
 }
-frac operator-(frac u1, frac u2)
+frac operator-(frac& u1, frac& u2)
 {
     if(u1.getMianownik() != u2.getMianownik())
     {
@@ -83,26 +83,26 @@ frac operator-(frac u1, frac u2)
         return frac(u1.getLicznik() - u2.getLicznik(), u1.getMianownik());
     }
 }
-frac operator-(int n, frac u){
+frac operator-(int& n, frac& u){
     return frac(u.getMianownik() * n - u.getLicznik(), u.getMianownik());
 }
-frac operator-(frac u, int n)
+frac operator-(frac& u, int& n)
 {
     return frac(u.getLicznik() - u.getMianownik() * n, u.getMianownik());
 }
-frac operator*(frac u1, frac u2)
+frac operator*(frac& u1, frac& u2)
 {
     return frac(u1.getLicznik() * u2.getLicznik(), u1.getMianownik() * u2.getMianownik());
 }
-frac operator*(int n, frac u)
+frac operator*(int& n, frac& u)
 {   
     return frac(u.getLicznik() * n, u.getMianownik());
 }
-frac operator*(frac u, int n)
+frac operator*(frac& u, int& n)
 {
     return frac(u.getLicznik() * n, u.getMianownik());
 }
-frac operator/(frac u1, frac u2)
+frac operator/(frac& u1, frac& u2)
 {
     return frac(u1.getLicznik() * u2.getMianownik(), u1.getMianownik() * u2.getLicznik());
 }
@@ -116,7 +116,7 @@ void operator--(frac& u)
     u.setLicznik(u.getLicznik() - u.getMianownik());
     u.uprosc();
 }
-frac operator%(frac u1, frac u2)
+frac operator%(frac& u1, frac& u2)
 {
     int NWW;
     NWW = std::lcm(u1.getMianownik(), u2.getMianownik());
@@ -124,27 +124,27 @@ frac operator%(frac u1, frac u2)
     u2.pomnoz(NWW / u2.getMianownik());
     return frac(u1.getLicznik() % u2.getLicznik(), u1.getMianownik());
 }
-bool operator==(frac u1, frac u2)
+bool operator==(frac& u1, frac& u2)
 {
     return u1.getLicznik() * u2.getMianownik() == u2.getLicznik() * u1.getMianownik();
 }
-bool operator!=(frac u1, frac u2)
+bool operator!=(frac& u1, frac& u2)
 {
     return u1.getLicznik() * u2.getMianownik() != u2.getLicznik() * u1.getMianownik();
 }
-bool operator>(frac u1, frac u2)
+bool operator>(frac& u1, frac& u2)
 {
     return u1.getLicznik() * u2.getMianownik() > u2.getLicznik() * u1.getMianownik();
 }
-bool operator>=(frac u1, frac u2)
+bool operator>=(frac& u1, frac& u2)
 {
     return u1.getLicznik() * u2.getMianownik() >= u2.getLicznik() * u1.getMianownik();
 }
-bool operator<(frac u1, frac u2)
+bool operator<(frac& u1, frac& u2)
 {
     return u1.getLicznik() * u2.getMianownik() < u2.getLicznik() * u1.getMianownik();
 }
-bool operator<=(frac u1, frac u2)
+bool operator<=(frac& u1, frac& u2)
 {
     return u1.getLicznik() * u2.getMianownik() <= u2.getLicznik() * u1.getMianownik();
 }
